@@ -1,0 +1,95 @@
+<div xmlns:th="http://www.thymeleaf.org">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="mb-1">Dashboard</h2>
+            <p class="text-muted mb-0">Pharmacy operations overview</p>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-4">
+        <div class="col-md-3">
+            <div class="card stat-card h-100 border-primary-subtle">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="text-muted small">Total Medicines</div>
+                            <h3 class="mb-0" th:text="${totalMedicines}">0</h3>
+                        </div>
+                        <span class="badge bg-primary-subtle text-primary fs-6">Med</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card stat-card h-100 border-warning-subtle">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="text-muted small">Low Stock</div>
+                            <h3 class="mb-0" th:text="${lowStockCount}">0</h3>
+                        </div>
+                        <span class="badge bg-warning-subtle text-warning fs-6">Low</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card stat-card h-100 border-danger-subtle">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="text-muted small">Expired</div>
+                            <h3 class="mb-0" th:text="${expiredCount}">0</h3>
+                        </div>
+                        <span class="badge bg-danger-subtle text-danger fs-6">Exp</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card stat-card h-100 border-success-subtle">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="text-muted small">Sales Today</div>
+                            <h3 class="mb-0" th:text="${todaySalesCount}">0</h3>
+                        </div>
+                        <span class="badge bg-success-subtle text-success fs-6">Sale</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Low Stock Alerts</h5>
+            <div th:if="${#lists.isEmpty(lowStockMedicines)}" class="text-muted">No low-stock medicines found.</div>
+            <div th:unless="${#lists.isEmpty(lowStockMedicines)}">
+                <table class="table table-hover mb-0">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Brand</th>
+                            <th>Category</th>
+                            <th>Stock</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="medicine : ${lowStockMedicines}">
+                            <td th:text="${medicine.name}">Medicine</td>
+                            <td th:text="${medicine.brand}">Brand</td>
+                            <td th:text="${medicine.category}">Category</td>
+                            <td>
+                                <span class="badge bg-warning text-dark" th:text="${medicine.stockQuantity}">0</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

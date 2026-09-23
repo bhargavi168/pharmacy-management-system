@@ -1,0 +1,63 @@
+body {
+    background-color: #f4f7fb;
+}
+
+.navbar-brand {
+    font-weight: 700;
+}
+
+.card {
+    border: none;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+}
+
+.stat-card .card-body {
+    padding: 1.25rem;
+}
+
+.text-success-soft {
+    color: #198754;
+}
+
+.text-warning-soft {
+    color: #ffc107;
+}
+
+.text-danger-soft {
+    color: #dc3545;
+}
+
+.badge-expired {
+    background-color: #dc3545;
+    color: white;
+}
+
+.badge-low-stock {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.billing-layout {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 1.25rem;
+}
+
+.cart-item {
+    border-bottom: 1px solid #e9ecef;
+    padding: 0.75rem 0;
+}
+
+.invoice-box {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 1.5rem;
+}
+
+@media (max-width: 992px) {
+    .billing-layout {
+        grid-template-columns: 1fr;
+    }
+}
